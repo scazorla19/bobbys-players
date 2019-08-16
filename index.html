@@ -1,10 +1,9 @@
 ---
 layout: default
 ---
-
 <h1>Test Video Players</h1>
 <p>A set of video players with simple GUIs for video engineers testing purposes.</p>
-{% for p in site.players %}
-<h2><a href="{{ p.url }}" >{{ p.short_name }}</a></h2>
+{% for p in site.data.players %}
+<h2><a href="{{ p.url }}" >{{ p.long_name }}</a></h2>
 <p>{{ p.description }}</p>
 {% endfor %}

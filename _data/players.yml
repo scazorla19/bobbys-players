@@ -1,0 +1,54 @@
+- short_name: 'Brightcove: HLS'
+  long_name: 'Brightcove Player: HLS'
+  url: '/bc-player-hls'
+  sidebar: true
+  description: >
+    The Brightcove Player is a high-performance, cross-platform HTML5-first
+    video player that loads quickly, delivers high-quality adaptive bitrate
+    HLS video across desktop and mobile platforms, and integrates with your
+    favorite advertising and analytics systems.
+
+- short_name: 'Brightcove: Dash'
+  long_name: 'Brightcove Player: Dash'
+  url: '/bc-player-dash'
+  sidebar: true
+  description: ''
+
+- short_name: 'Shaka'
+  long_name: 'Shaka Player'
+  url: '/shaka'
+  description: >
+    Shaka Player is an open-source JavaScript library for adaptive media.
+    It plays adaptive media formats (such as DASH and HLS) in a browser,
+    without using plugins or Flash. Instead, Shaka Player uses the open web
+    standards MediaSource Extensions and Encrypted Media Extensions.
+
+- short_name: 'DashIF Reference'
+  long_name: 'Dash Industry Forum Reference Client'
+  url: '/dashjs'
+  sidebar: true
+  description: >
+    A reference client implementation for the playback of MPEG DASH via
+    JavaScript and compliant browsers.
+
+- short_name: 'Chromecast'
+  long_name: 'Chromecast Sender Player'
+  url: '/chromecast-sender'
+  description: ''
+
+- short_name: 'VideoJS HLS'
+  long_name: 'VideoJS HLS'
+  url: '/videojs-contrib-hls'
+  sidebar: true
+  description: >
+    videojs-contrib-hls lets you use a single format and deliver adaptive
+    streaming video to all major desktop and mobile browsers.
+
+- short_name: 'VideoJS: Dash'
+  long_name: 'VideoJS MPEG-DASH'
+  url: '/videojs-contrib-dash'
+  sidebar: true
+  description: >
+    videojs-contrib-dash lets you use a single format and deliver adaptive
+    streaming video to many recent HTML5 browsers.
+

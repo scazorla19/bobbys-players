@@ -13,14 +13,14 @@ layout: default
   <form id="playform">
     <div class="form-group">
       <label for="manifest">MPEG DASH Manifest:</label>
-      <input type="text" class="form-control" id="manifest" name="manifest">
+      <input type="text" class="form-control" id="manifest" name="manifest" data-manifest-target data-persist="dash-manifest">
     </div>
     <div class="form-group">
       <label for="license">Widevine License Server: <small>(Optional)</small></label>
-      <input type="text" class="form-control" id="license" name="license">
+      <input type="text" class="form-control" id="license" name="license" data-persist="dash-widevine">
     </div>
     <button type="submit" class="btn btn-primary btn-lg">Play!</button><br><br>
-    <button type="button" id="demo" class="btn btn-info btn-sm">Load Demo Manifest</button>
+    {% include examples.html kind="dash" %}
   </form>
 </section>
 
@@ -38,7 +38,7 @@ const player = videojs('example'),
   manifest = document.getElementById('manifest'),
   license = document.getElementById('license');
 
-function play() {
+document.getElementById('playform').onsubmit = () => {
   const opts = {
     src: manifest.value,
     type: 'application/dash+xml',
@@ -52,12 +52,9 @@ function play() {
   } else {
     console.log('Will NOT do DRM');
   }
+  persistAll();
   player.src(opts);
   player.play();
-}
-
-document.getElementById('demo').onclick = () => {
-  manifest.value = 'http://rdmedia.bbc.co.uk/dash/ondemand/testcard/1/client_manifest-events.mpd';
-  play();
-}
+  return false
+};
 </script>

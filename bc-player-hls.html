@@ -7,10 +7,13 @@ layout: default
   <form id="playform">
     <div class="form-group">
       <label for="manifest">HLS Manifest:</label>
-      <input type="text" class="form-control" id="manifest" name="manifest">
+      <input type="text"
+        data-manifest-target
+        data-persist="hls-manifest"
+        class="form-control" id="manifest" name="manifest">
     </div>
     <button type="submit" class="btn btn-primary btn-lg">Play!</button><br><br>
-    <button type="button" id="demo" class="btn btn-info btn-sm">Load Demo Manifest</button>
+    {% include examples.html kind="hls" %}
   </form>
 </section>
 
@@ -24,19 +27,13 @@ layout: default
 <script>
 const player = videojs('example'),
   manifest = document.getElementById('manifest');
-function play() {
+document.getElementById('playform').onsubmit = () => {
+  persistAll();
   player.src({
     src: manifest.value,
     type: 'application/x-mpegURL',
   });
   player.play();
-}
-document.getElementById('playform').onsubmit = () => {
-  play();
   return false;
-};
-document.getElementById('demo').onclick = () => {
-  manifest.value = 'http://s3.amazonaws.com/_bc_dml/example-content/tears-of-steel/playlist.m3u8';
-  play();
-};
+}
 </script>

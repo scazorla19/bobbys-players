@@ -11,10 +11,10 @@ layout: default
   <form id="playform">
     <div class="form-group">
       <label for="manifest">MPEG DASH Manifest:</label>
-      <input type="text" class="form-control" id="manifest" name="manifest">
+      <input type="text" class="form-control" id="manifest" name="manifest" data-manifest-target data-persist="dash-manifest">
     </div>
     <button type="submit" class="btn btn-primary btn-lg">Play!</button><br><br>
-    <button type="button" id="demo" class="btn btn-info btn-sm">Load Demo Manifest</button>
+    {% include examples.html kind="dash" %}
   </form>
 </section>
 
@@ -26,20 +26,14 @@ layout: default
 <p><small>DashJS 1.5.1</small></p>
 
 <script>
-const manifest = document.getElementById('manifest');
-function play() {
-  const video = document.querySelector("#example"),
-    source = document.createElement("source");
+document.getElementById('playform').onsubmit = () => {
+  const manifest = document.getElementById('manifest'),
+        video    = document.getElementById('example'),
+        source   = document.createElement('source');
   source.src = manifest.value;
   source.type = "application/dash+xml";
+  persistAll();
   const player = Dash.create(video, source);
-}
-document.getElementById('playform').onsubmit = () => {
-  play();
   return false;
-};
-document.getElementById('demo').onclick = () => {
-  manifest.value = 'http://rdmedia.bbc.co.uk/dash/ondemand/testcard/1/client_manifest-events.mpd';
-  play();
 };
 </script>

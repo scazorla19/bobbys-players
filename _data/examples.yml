@@ -1,0 +1,6 @@
+dash:
+  - name: Sintel
+    url: https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd
+hls:
+  - name: Tears of Steel
+    url: https://s3.amazonaws.com/_bc_dml/example-content/tears-of-steel/playlist.m3u8
