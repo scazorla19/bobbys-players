@@ -23,14 +23,14 @@ layout: default
   <form id="playform">
     <div class="form-group">
       <label for="manifest">DASH Manifest:</label>
-      <input type="text" class="form-control" id="manifest" name="manifest">
+      <input type="text" class="form-control" id="manifest" name="manifest" data-manifest-target data-persist="dash-manifest">
     </div>
     <div class="form-group">
       <label for="widevine-url">Widevine License URL: (Optional)</label>
-      <input type="text" class="form-control" id="widevine-url" name="manifest">
+      <input type="text" class="form-control" id="widevine-url" name="manifest" data-persist="dash-widevine">
     </div>
     <button type="submit" class="btn btn-primary btn-lg" is="google-cast-button" id="castbutton">Cast Not Available</button><br><br>
-    <button type="button" id="demo" class="btn btn-info btn-sm">Load Demo Manifest</button>
+    {% include examples.html kind="dash" %}
   </form>
 </section>
 <section>
