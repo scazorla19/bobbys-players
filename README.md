@@ -1,4 +1,4 @@
-# Phil's Players
+# Bobby's Players
 
 A set of video players with simple GUIs for video engineers to use for testing.
 
