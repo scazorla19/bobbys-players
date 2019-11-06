@@ -41,10 +41,14 @@ layout: default
 <p><small>This should play CENC content everywhere, using the Brightcove special sauce for setting license URLs, <a href="http://docs.brightcove.com/en/video-cloud/brightcove-player/guides/dash-drm.html">as documented here.</a></small></p>
 
 <script>
+var cslHeaders = null;
 const customGetLicense = (keySystemOptions) => (emeOptions, keyMessage, callback) => {
   const auth_alert = document.getElementById('bcov-auth-alert');
   const headers = mergeAndRemoveNull(
-    {'Content-type': 'application/octet-stream'},
+    {
+      'Content-type': 'application/octet-stream',
+    },
+    cslHeaders,
     emeOptions.emeHeaders,
     keySystemOptions.licenseHeaders
   );
@@ -62,6 +66,15 @@ const customGetLicense = (keySystemOptions) => (emeOptions, keyMessage, callback
       callback(err);
       return;
     }
+    Object
+      .keys(response.headers)
+      .filter((key) => key.startsWith('x-dt-'))
+      .filter((key) => !key.startsWith('x-dt-bc'))
+      .forEach((key) => {
+        cslHeaders = cslHeaders == null ? {} : cslHeaders;
+        console.log('comparing'+key, response.headers[key] == cslHeaders[key]);
+        cslHeaders[key] = response.headers[key];
+      })
     const jwt_valid = response.headers['bcov-jwt-validity'];
     if (!jwt_valid) {
       auth_alert.className = 'alert alert-warning';
